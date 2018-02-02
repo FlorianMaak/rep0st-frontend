@@ -1,0 +1,149 @@
+@mobile: 768px;
+
+body {
+  background-color: #161618;
+  font-family: sans-serif;
+  margin: 0;
+  color: #f2f5f4;
+
+  @media only screen and (min-width: @mobile) {
+    background: #161618 url('../images/background.jpg') repeat-x;
+  }
+
+  a {
+    color: #75c0c7;
+    text-decoration: none;
+
+    &:hover {
+      color: #f2f5f4;
+    }
+  }
+
+  #wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding-bottom: 45px;
+
+    @media only screen and (min-width: @mobile) {
+      padding-bottom: 0;
+    }
+  }
+
+  main {
+    background-color: #161618;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .8);
+    min-height: 33vh;
+    display: flex;
+    flex-direction: column;
+
+    #content {
+      flex-grow: 1;
+
+      &.js-active {
+        display: flex;
+        overflow: hidden;
+
+        & ~ #footer {
+          text-align: left;
+          
+          #prev {
+            display: inline-block;
+          }
+
+          #next {
+            width: initial;
+            float: right;
+
+            @media (max-width: @mobile) {
+              width: 50%;
+            }
+          }
+        }
+      }
+
+      > .page {
+        width: ~"calc(100% - 50px)";
+        flex-grow: 1;
+        flex-shrink: 0;
+        padding: 25px;
+        transition: margin-left .2s ease-out;
+      }
+    }
+
+    #footer {
+      padding: 25px 25px 25px 25px;
+      text-align: right;
+
+      @media (max-width: @mobile) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        padding: 0;
+      }
+
+      button {
+        cursor: pointer;
+        padding: 15px 50px;
+        border: none;
+        background-color: #ee4d2e;
+        transition: background-color .2s ease-out;
+        color: #f2f5f4;
+        outline: none;
+        width: 50%;
+        height: 45px;
+
+        @media only screen and (min-width: @mobile) {
+          width: initial;
+          height: initial;
+        }
+
+        &[disabled] {
+          background-color: #555 !important;
+          color: #888 !important;
+          cursor: default;
+        }
+
+        &:hover {
+          background-color: #f2f5f4;
+          color: #555;
+        }
+
+        &#prev {
+          display: none;
+        }
+
+        @media (max-width: @mobile) {
+          &#next {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  header {
+    margin-top: 25px;
+    padding: 0 25px 25px 25px;
+    text-align: left;
+
+    @media only screen and (min-width: @mobile) {
+      margin-top: 15vh;
+      text-align: right;
+    }
+
+    #logo {
+      font-size: 1.6rem;
+      color: #f2f5f4;
+
+      &:hover {
+        color: #f2f5f4;
+      }
+
+      span:first-child {
+        color: #ee4d2e;
+      }
+    }
+  }
+}
